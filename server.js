@@ -87,12 +87,26 @@ io.on("connection", (socket) => {
       });
   });
 
+  // Chat message event for testing
+  socket.on("chatMessageTest", (msg) => {
+    addMessage("Test User1", "Test", msg, false)
+      .then((res) => {
+        console.log("Added Test chat message : ", msg);
+      })
+      .catch((err) => console.error(err));
+  });
+
   // Runs when client disconnects
   socket.on("disconnect", () => {
     userLeave(socket.id)
       .then((user) => {
         if (user) {
-          addMessage(botName, user.room, `${user.username}  has left the chat`, true)
+          addMessage(
+            botName,
+            user.room,
+            `${user.username}  has left the chat`,
+            true
+          )
             .then((res) => {
               io.to(user.room).emit("message", res);
               // Send users and room info

@@ -16,6 +16,7 @@
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
+    "artillery": "^1.6.1",
     "nodemon": "^2.0.2"
   }
 }

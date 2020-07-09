@@ -1,0 +1,14 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 100
+      arrivalRate: 20
+scenarios:
+  - engine: "socketio"
+    flow:
+      - get:
+            url: "/"
+      - emit:
+          channel: "chatMessageTest"
+          data: "Test Messages 123"
+
